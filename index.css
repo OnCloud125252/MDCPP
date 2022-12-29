@@ -1,15 +1,25 @@
 body {
+    color: azure;
     margin: 0;
     background-color: #22272e;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+* {
+    transition: 0.3s;
 }
 
 .iframe_container {
     position: absolute;
     height: calc(100% - 30px);
-    border-radius: 15px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     overflow: hidden;
     margin: 15px 15px 15px 0;
-    width: calc(85% - 15px);
+    width: calc(80% - 15px);
     right: 0;
 }
 
@@ -24,12 +34,91 @@ body {
     height: 100%;
 }
 
-.navigator {
+.navigator_container {
     position: absolute;
     height: calc(100% - 30px);
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     overflow: hidden;
     margin: 15px 0px 15px 15px;
-    width: calc(15% - 15px);
+    width: calc(20% - 15px);
     left: 0;
+}
+
+.navigator {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navigator li {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.title {
+    height: calc(100% - 30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 15px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+    color: #202020;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.title p {
+    margin: 0 15px 0 15px;
+}
+
+.selected {
+    background-color: rgb(240, 240, 240);
+}
+
+.mask_top {
+    position: relative;
+    width: 100%;
+    height: 15px;
+    background-color: #22272e;
+    border-bottom-right-radius: 10px;
+}
+
+.mask_top::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    background: transparent;
+    height: 20px;
+    width: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 0 -10px 0 0 #22272e;
+}
+
+.mask_bottom {
+    position: relative;
+    width: 100%;
+    height: 15px;
+    background-color: #22272e;
+    border-top-right-radius: 10px;
+}
+
+.mask_bottom::before {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    background: transparent;
+    height: 20px;
+    width: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0 10px 0 0 #22272e;
 }

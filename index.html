@@ -7,15 +7,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MDCPP Web Class</title>
     <link rel="stylesheet" href="index.css">
+    <script defer>
+        async function select(element) {
+            element.parentNode.setAttribute("class", "selected");
+            const articleList = document.getElementsByTagName("li");
+            for (var i = 0; i < articleList.length; i++) {
+                if (element.parentNode === articleList[i]) continue;
+                articleList[i].removeAttribute("class");
+            }
+            const articleName = element.getElementsByTagName("p")[0].innerText;
+            const article = document.getElementById("article");
+            fetch(`./Pages/${articleName}/index.html`).then(response => {
+                if (response.status === 200) {
+                    article.setAttribute("src", `./Pages/${articleName}/index.html`);
+                }
+                else {
+                    article.setAttribute("src", `./Pages/Not Found/index.html`);
+                    console.log(`Error loading page "./Pages/${articleName}/index.html"`);
+                }
+            }).catch(_ => {
+                console.log(`Error loading page "./Pages/${articleName}/index.html"`);
+            });
+        }
+    </script>
 </head>
 
 <body>
-    <div class="navigator">
-        <ul>
+    <div class="navigator_container">
+        <ul class="navigator">
+            <li class="selected">
+                <div class="mask_top"></div>
+                <div class="title" onclick="select(this)">
+                    <p>How To Build a Discord Bot</p>
+                </div>
+                <div class="mask_bottom"></div>
+            </li>
+            <li>
+                <div class="mask_top"></div>
+                <div class="title" onclick="select(this)">
+                    <p>How To Destroy a Discord Bot</p>
+                </div>
+                <div class="mask_bottom"></div>
+            </li>
+            <li>
+                <div class="mask_top"></div>
+                <div class="title" onclick="select(this)">
+                    <p>How To Destroy a Discord Bot</p>
+                </div>
+                <div class="mask_bottom"></div>
+            </li>
+            <li>
+                <div class="mask_top"></div>
+                <div class="title" onclick="select(this)">
+                    <p>How To Destroy a Discord Bot</p>
+                </div>
+                <div class="mask_bottom"></div>
+            </li>
         </ul>
     </div>
     <div class="iframe_container">
-        <iframe class="iframe" src="./Pages/How_To_Build_a_Discord_Bot/index.html" frameborder="0"></iframe>
+        <iframe id="article" class="iframe" src="./Pages/How To Build a Discord Bot/index.html" frameborder="0" />
     </div>
 </body>
 
